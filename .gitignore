@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment — NEVER subas este archivo
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Build / misc
+dist/
+.cache/

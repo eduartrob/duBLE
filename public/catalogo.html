@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo — duBLE Pâtisserie</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&family=Epilogue:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface:              '#fdf8f5',
+            'surface-low':        '#f7f3ee',
+            'surface-container':  '#f2ede8',
+            'surface-high':       '#ece7e2',
+            'surface-highest':    '#e6e2dc',
+            on:                   '#34322f',
+            'on-muted':           '#615f5a',
+            primary:              '#7e572e',
+            'primary-light':      '#d9a777',
+            'primary-on':         '#fff7f4',
+            secondary:            '#f9dcdc',
+            'secondary-on':       '#614d4d',
+            outline:              '#b5b1ac',
+            'outline-dark':       '#7d7a76',
+            pink:                 '#FFB7C5',   /* landing accent */
+            rose:                 '#D4A5A5',
+            cream:                '#FFF9F1',
+          },
+          fontFamily: {
+            headline: ['Epilogue','sans-serif'],
+            body:     ['Manrope','sans-serif'],
+            script:   ['Dancing Script','cursive'],
+          },
+          borderRadius: {
+            full: '9999px',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── Base ── */
+    body { font-family:'Manrope',sans-serif; background:#fdf8f5; color:#34322f; }
+    h1,h2,h3,.headline { font-family:'Epilogue',sans-serif; }
+    .material-symbols-outlined {
+      font-family:'Material Symbols Outlined';
+      font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+      vertical-align:middle; line-height:1;
+    }
+
+    /* ── Floating background shapes (from landing) adapted to catalog palette ── */
+    .bg-blob {
+      position:fixed; border-radius:50%; filter:blur(90px); z-index:-1; opacity:0.18;
+      animation: blobFloat 22s infinite alternate;
+      pointer-events:none;
+    }
+    .blob-1 { width:500px;height:500px; background:#d9a777; top:-120px; right:-80px; }
+    .blob-2 { width:360px;height:360px; background:#f9dcdc; bottom:-80px; left:-60px; }
+    .blob-3 { width:280px;height:280px; background:#FFB7C5; top:50%; left:50%; transform:translate(-50%,-50%); }
+    @keyframes blobFloat {
+      from { transform:translate(0,0) scale(1); }
+      to   { transform:translate(40px,60px) scale(1.05); }
+    }
+    .blob-3 { animation:blobFloat3 26s infinite alternate; }
+    @keyframes blobFloat3 {
+      from { transform:translate(-50%,-50%) scale(1); }
+      to   { transform:translate(calc(-50% + 30px),calc(-50% + 40px)) scale(1.08); }
+    }
+
+    /* ── Navbar (mismo estilo que landing) ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
+    }
+    .navbar.scrolled {
+      background: rgba(253,251,251,0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 4px 24px rgba(74,74,74,0.08);
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: #4A4A4A;
+    }
+    .logo span {
+      font-family: 'Dancing Script', cursive;
+      color: #FFB7C5;
+      margin-left: 3px;
+    }
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+    .navbar nav a {
+      text-decoration: none;
+      color: #4A4A4A;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
+    }
+    .navbar nav a:hover,
+    .navbar nav a.active { color: #FFB7C5; }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #7e572e;
+      color: #fff7f4;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      transition: all 0.6s cubic-bezier(0.23,1,0.32,1);
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-cta:hover { background: #5a3d1e; transform: translateY(-2px); }
+    .nav-cta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FFB7C5;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.5; transform:scale(0.8); }
+    }
+
+    /* ── Filter pills ── */
+    .pill { transition: all 0.2s ease; cursor:pointer; }
+    .pill.active {
+      background: linear-gradient(135deg,#7e572e,#d9a777);
+      color: #fff7f4;
+      box-shadow: 0 4px 14px rgba(126,87,46,0.25);
+    }
+
+    /* ── Product cards (Design 1 editorial style) ── */
+    .prod-card { transition: transform 0.3s ease; }
+    .prod-card:hover { transform: translateY(-6px); }
+    .prod-card:hover .prod-img { transform: scale(1.06); }
+    .prod-img { transition: transform 0.7s cubic-bezier(0.23,1,0.32,1); }
+
+    /* ── Skeleton ── */
+    .skeleton {
+      background: linear-gradient(90deg,#f2ede8 25%,#ece7e2 50%,#f2ede8 75%);
+      background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:1rem;
+    }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* ── Cart drawer ── */
+    #cart-backdrop {
+      opacity:0; pointer-events:none;
+      transition: opacity 0.35s ease;
+    }
+    #cart-drawer {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+    }
+    body.cart-open #cart-backdrop { opacity:1; pointer-events:auto; }
+    body.cart-open #cart-drawer   { transform:translateX(0); }
+
+    /* ── Qty stepper ── */
+    .qty-btn {
+      width:28px; height:28px; border-radius:50%; border:1px solid #b5b1ac;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:background 0.15s;
+    }
+    .qty-btn:hover { background:#ece7e2; }
+
+    /* ── Toast ── */
+    #toast {
+      position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(12px);
+      z-index:300; padding:12px 24px; border-radius:9999px;
+      background:#34322f; color:#fdf8f5;
+      font-family:'Manrope',sans-serif; font-size:.85rem; font-weight:600;
+      opacity:0; pointer-events:none;
+      transition: opacity 0.3s, transform 0.3s;
+      white-space:nowrap;
+    }
+    #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-thumb { background:#e6e2dc; border-radius:10px; }
+  </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+
+  <!-- background blobs from landing, remapped to catalog palette -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <a href="/" class="logo">du<span>BLE</span></a>
+    <nav>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/#nosotros">Historia</a></li>
+        <li><a href="/catalogo.html" class="active">Colección</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button id="btn-open-cart" aria-label="Abrir carrito" class="nav-cta">
+      <span class="nav-cta-dot"></span>
+      <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle">shopping_bag</span>
+      Carrito
+      <span id="cart-badge"
+        style="display:none;background:#FFB7C5;color:#4A4A4A;font-size:10px;font-weight:700;
+               border-radius:50%;width:18px;height:18px;align-items:center;justify-content:center;
+               margin-left:2px">0</span>
+    </button>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       MAIN
+  ══════════════════════════════════════ -->
+  <main class="pt-24 pb-20">
+
+    <!-- ── HERO (Design 2 asymmetric) ── -->
+    <section class="max-w-screen-xl mx-auto px-6 md:px-12 mb-20">
+      <div class="bg-surface-low rounded-3xl overflow-hidden flex flex-col lg:flex-row items-center gap-10 p-8 lg:p-14">
+        <div class="lg:w-1/2 space-y-6">
+          <span class="font-script text-rose text-2xl block">Recetas con alma</span>
+          <h1 class="headline text-5xl lg:text-6xl font-bold text-on leading-[1.1] tracking-tight">
+            Pasteles<br/>
+            <em class="text-primary font-normal" style="font-family:'Dancing Script',cursive;font-size:1.15em">Artesanales</em>
+          </h1>
+          <p class="font-body text-base text-on-muted max-w-md leading-relaxed">
+            Ingredientes seleccionados, técnica depurada y un diseño que eleva cualquier celebración. Descubre nuestra colección de temporada.
+          </p>
+          <button onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-light text-primary-on
+                   font-bold px-8 py-3.5 rounded-full text-sm hover:opacity-90 transition-opacity shadow-md">
+            <span class="material-symbols-outlined" style="font-size:18px">storefront</span>
+            Ver Productos
+          </button>
+        </div>
+        <div class="lg:w-1/2 w-full">
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-surface-high">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPcZ5VNESdT43sgsCl3gC2NljdU7mt3GF3Vj_J1Hiu8MJ3h0JNnq9Ii0c9Xyvivuaz6FR36tTiUkSMLHWowwMwWQW2-Tt9J5FTvDGVr3sNX2D2yKdeN9gNQZdGmRBuunB46xlNgy5w2wH4QOurxTY3DcXPy09FR0HIR9lqLO9jQkbjOG19VVDOqMWyfbczmGcNwg0vvluJ44Zgj3YTiUNFrAXjWIXxsiFun23h0uoYxUd9l3RMudJXfLXGUhTu_GLg3eFNP6VGXhqF"
+              alt="Pastel artesanal duBLE"
+              class="w-full h-full object-cover"
+              onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80'"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CATALOG SECTION ── -->
+    <section id="catalogo" class="max-w-screen-xl mx-auto px-6 md:px-12">
+
+      <!-- Title + filters (Design 1 centered style) -->
+      <header class="mb-14 flex flex-col items-center text-center space-y-6">
+        <h2 class="headline text-4xl md:text-5xl font-bold tracking-tight text-on">Nuestras Creaciones</h2>
+        <div id="filters" class="flex flex-wrap justify-center gap-3">
+          <button class="pill active px-5 py-2 rounded-full bg-surface-high text-on text-sm font-semibold font-body" data-cat="todos">Todos</button>
+          <button class="pill px-5 py-2 rounded-full bg-surface-high text-on text-sm font-semibold font-body" data-cat="pasteles">Pasteles</button>
+          <button class="pill px-5 py-2 rounded-full bg-surface-high text-on text-sm font-semibold font-body" data-cat="macarons">Macarons</button>
+          <button class="pill px-5 py-2 rounded-full bg-surface-high text-on text-sm font-semibold font-body" data-cat="chocolates">Chocolates</button>
+          <button class="pill px-5 py-2 rounded-full bg-surface-high text-on text-sm font-semibold font-body" data-cat="regalos">Regalos</button>
+        </div>
+      </header>
+
+      <!-- Product grid (Design 1 editorial: 3 cols, alternating offset) -->
+      <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+        <!-- Filled by JS -->
+        <div class="skeleton h-96 rounded-2xl"></div>
+        <div class="skeleton h-96 rounded-2xl md:translate-y-10"></div>
+        <div class="skeleton h-96 rounded-2xl"></div>
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="hidden text-center py-24 text-on-muted font-body">
+        <span class="material-symbols-outlined block mb-3 opacity-30" style="font-size:52px">sentiment_dissatisfied</span>
+        <p class="text-base">No hay productos en esta categoría todavía.</p>
+      </div>
+
+      <!-- API error state -->
+      <div id="error-state" class="hidden text-center py-24 text-on-muted font-body">
+        <span class="material-symbols-outlined block mb-3 opacity-30" style="font-size:52px">wifi_off</span>
+        <p class="text-base">No se pudieron cargar los productos.<br>Asegúrate de que el servidor esté en marcha.</p>
+      </div>
+
+    </section>
+
+    <!-- ── EDITORIAL STRIP (Design 1) ── -->
+    <section class="w-full bg-surface-low py-20 mt-24">
+      <div class="max-w-screen-xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7APB4rhpBbnsF2LZotLXMO_lvwWX7ogRZRXO_Tl5JekE6HBobJXuEU0az3tVeojX8d3U0_POc-HnWLhC4ZEOEZ-HbLc_TeWQjBftnv5fi_zajxX01FmR8aLyLdfMeiDSUQZYvFTXnmTa2jP1elvFS7pavIshzAf2CQecfEaHeaAj3QzM6WDoPcgngt3uIvKjisLoz6IV9NzdUAJWw7BnjdtsDaMH6lOvGo3J2jjyy7p3K_WzcTGgQs6lj8tXLp_jsbFXMIUsKgC5w"
+              alt="Chef pastelero duBLE"
+              class="w-full h-full object-cover"
+              onerror="this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80'"
+            />
+          </div>
+          <div class="flex flex-col max-w-lg space-y-6 lg:pl-8">
+            <h2 class="headline text-4xl font-bold text-on leading-tight">El Arte de la Pâtisserie</h2>
+            <p class="font-body text-base text-on-muted leading-relaxed">
+              Cada creación en duBLE es un testimonio de paciencia y precisión. Utilizamos ingredientes seleccionados de las mejores regiones, tratando cada receta como una obra de arte efímera.
+            </p>
+            <a href="/#nosotros"
+              class="font-body text-sm text-primary font-bold hover:underline underline-offset-8 decoration-2 flex items-center w-max gap-1">
+              Descubre nuestra historia
+              <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="w-full py-12 px-8 md:px-12 bg-surface-low">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-5 max-w-screen-xl mx-auto">
+      <a href="/" class="flex items-baseline gap-0.5 no-underline">
+        <span class="headline text-lg font-bold text-primary">du</span>
+        <span class="font-script text-2xl text-pink" style="line-height:1">BLE</span>
+      </a>
+      <p class="text-on-muted font-body text-xs tracking-wide opacity-70">
+        © 2026 duBLE Pastelería Artesanal. Hecho con intención.
+      </p>
+      <ul class="flex gap-6 text-xs tracking-widest uppercase font-body">
+        <li>
+          <a href="https://www.instagram.com/duble.reposteria?igsh=MTB1czZwZmUyYnd0"
+             target="_blank" rel="noopener"
+             class="text-on-muted hover:text-primary transition-colors">Ig</a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/share/1acQe1BuTe/"
+             target="_blank" rel="noopener"
+             class="text-on-muted hover:text-primary transition-colors">Fb</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       CART BACKDROP
+  ══════════════════════════════════════ -->
+  <div id="cart-backdrop"
+    class="fixed inset-0 z-[90] bg-black/20 backdrop-blur-sm">
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CART DRAWER (Design 2)
+  ══════════════════════════════════════ -->
+  <aside id="cart-drawer"
+    class="fixed top-0 right-0 z-[100] w-full max-w-md h-full bg-surface shadow-2xl
+           flex flex-col border-l border-surface-high">
+
+    <!-- Drawer header -->
+    <div class="flex items-center justify-between px-7 py-5 border-b border-surface-container shrink-0">
+      <h2 class="headline text-xl font-bold text-on">Tu Pedido</h2>
+      <button id="btn-close-cart" aria-label="Cerrar carrito"
+        class="text-on-muted hover:text-primary transition-colors p-1">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <!-- Scrollable content -->
+    <div class="flex-1 overflow-y-auto px-7 py-5 space-y-7">
+
+      <!-- Empty state -->
+      <div id="cart-empty" class="flex flex-col items-center justify-center py-16 text-on-muted font-body text-center">
+        <span class="material-symbols-outlined mb-3 opacity-25" style="font-size:52px">shopping_bag</span>
+        <p class="text-sm leading-relaxed">Tu carrito está vacío.<br/>Agrega productos para comenzar.</p>
+      </div>
+
+      <!-- Items list -->
+      <div id="cart-items" class="space-y-5"></div>
+
+      <!-- Total -->
+      <div id="cart-total-row" class="hidden bg-surface-container p-5 rounded-2xl flex justify-between items-center">
+        <span class="font-body text-sm font-semibold text-on">Total estimado</span>
+        <span id="cart-total-value" class="headline text-2xl font-bold text-primary">$0.00</span>
+      </div>
+
+      <!-- Checkout form -->
+      <div id="checkout-block" class="hidden space-y-5">
+        <h3 class="headline text-base font-bold text-on">Detalles de Entrega</h3>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-on-muted mb-1.5 ml-1" for="f-name">Nombre Completo *</label>
+            <input id="f-name" type="text" placeholder="Ej. María González"
+              class="w-full bg-surface-high text-on rounded-xl border border-transparent
+                     focus:border-primary focus:ring-0 px-4 py-3 text-sm
+                     placeholder:text-outline transition-colors font-body"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-on-muted mb-1.5 ml-1" for="f-address">Dirección de Entrega *</label>
+            <input id="f-address" type="text" placeholder="Calle, Número, Colonia"
+              class="w-full bg-surface-high text-on rounded-xl border border-transparent
+                     focus:border-primary focus:ring-0 px-4 py-3 text-sm
+                     placeholder:text-outline transition-colors font-body"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-on-muted mb-1.5 ml-1" for="f-phone">Teléfono *</label>
+            <input id="f-phone" type="tel" placeholder="10 dígitos"
+              class="w-full bg-surface-high text-on rounded-xl border border-transparent
+                     focus:border-primary focus:ring-0 px-4 py-3 text-sm
+                     placeholder:text-outline transition-colors font-body"/>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-on-muted mb-1.5 ml-1" for="f-notes">Notas Adicionales</label>
+            <textarea id="f-notes" rows="2" placeholder="Instrucciones especiales…"
+              class="w-full bg-surface-high text-on rounded-xl border border-transparent
+                     focus:border-primary focus:ring-0 px-4 py-3 text-sm
+                     placeholder:text-outline transition-colors resize-none font-body"></textarea>
+          </div>
+          <p id="form-error" class="hidden text-red-600 text-xs font-body">
+            ⚠ Por favor completa todos los campos marcados con *.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /scroll area -->
+
+    <!-- CTA footer -->
+    <div id="cart-cta" class="hidden px-7 py-5 border-t border-surface-container shrink-0
+         bg-surface shadow-[0_-8px_20px_rgba(253,248,245,0.95)]">
+      <button id="btn-whatsapp"
+        class="w-full flex items-center justify-center gap-3
+               bg-gradient-to-r from-primary to-primary-light text-primary-on
+               font-bold py-4 rounded-full text-sm hover:opacity-90
+               transition-opacity shadow-md font-body">
+        <!-- WhatsApp SVG -->
+        <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Completar Pedido por WhatsApp
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- Toast notification -->
+  <div id="toast">✓ Producto agregado</div>
+
+  <script src="/js/catalog.js"></script>
+</body>
+</html>
