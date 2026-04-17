@@ -46,6 +46,20 @@
 
     <!-- ── HERO ── -->
     <section id="inicio" class="hero">
+        <!-- Video wall de fondo — 3 videos lado a lado, sin sonido -->
+        <div class="hero-video-wall" aria-hidden="true">
+            <video class="hero-vid" autoplay muted loop playsinline preload="auto">
+                <source src="/video/video-01.mp4" type="video/mp4">
+            </video>
+            <video class="hero-vid" autoplay muted loop playsinline preload="auto">
+                <source src="/video/video-03.mp4" type="video/mp4">
+            </video>
+            <video class="hero-vid" autoplay muted loop playsinline preload="auto">
+                <source src="/video/video-05.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <!-- Contenido principal -->
         <div class="hero-content">
             <span class="subtitle reveal">Recetas con alma</span>
             <h1 class="reveal">Arte hecho <br><span class="highlight">Pastelería</span></h1>
@@ -53,16 +67,6 @@
             <div class="hero-btns reveal">
                 <a href="/catalogo.html" class="btn btn-primary">Explorar Catálogo</a>
                 <a href="#nosotros" class="btn btn-secondary">Nuestra Esencia</a>
-            </div>
-        </div>
-        <div class="hero-image reveal">
-            <div class="floating-img">
-                <div class="cake-icon">
-                    <div class="layer layer-1"></div>
-                    <div class="layer layer-2"></div>
-                    <div class="layer layer-3"></div>
-                    <div class="cherry"></div>
-                </div>
             </div>
         </div>
     </section>
@@ -91,67 +95,111 @@
         </div>
     </section>
 
-    <!-- ── MENU (preview) ── -->
+    <!-- ── VIDEO STRIP ── -->
+    <div class="video-strip" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="/video/video-02.mp4" type="video/mp4">
+        </video>
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="/video/video-04.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- ── MENU ── -->
     <section id="menu" class="menu">
         <div class="container">
             <div class="section-header reveal">
                 <span class="subtitle">Nuestra Selección</span>
-                <h2>Colección de Temporada</h2>
+                <h2>Colección</h2>
             </div>
+
+            <!-- Productos destacados con imágenes reales -->
             <div class="menu-grid">
                 <div class="menu-item reveal">
                     <div class="item-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80" alt="Pastel de Lavanda" class="item-img-real">
+                        <img src="/img/tarta-vasca.jpeg" alt="Tarta Vasca" class="item-img-real">
                     </div>
                     <div class="item-info">
-                        <h3>Pastel de Lavanda</h3>
-                        <p>Infusión de flores silvestres y crema suave de vainilla bourbon.</p>
+                        <h3>Tarta Vasca</h3>
+                        <p>Cremosa y horneada al punto perfecto, con base especiada y textura suave irresistible.</p>
                         <div class="item-footer">
-                            <span class="price">$280.00</span>
+                            <span class="price">$75.00</span>
                             <a href="/catalogo.html" class="add-btn" title="Ir al catálogo">+</a>
                         </div>
                     </div>
                 </div>
                 <div class="menu-item reveal">
                     <div class="item-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80" alt="Tarta de Pistacho" class="item-img-real">
+                        <img src="/img/rol-canela.jpeg" alt="Rol de Canela con Mascarpone" class="item-img-real">
                     </div>
                     <div class="item-info">
-                        <h3>Tarta de Pistacho</h3>
-                        <p>Mousse aterciopelado de pistachos sicilianos sobre base de sablée.</p>
+                        <h3>Rol de Canela con Mascarpone</h3>
+                        <p>Masa esponjosa con canela y glaseado artesanal de mascarpone. Precio por pieza.</p>
                         <div class="item-footer">
-                            <span class="price">$320.00</span>
+                            <span class="price">$65.00</span>
                             <a href="/catalogo.html" class="add-btn" title="Ir al catálogo">+</a>
                         </div>
                     </div>
                 </div>
                 <div class="menu-item reveal">
                     <div class="item-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?w=800&q=80" alt="Cupcake Arándanos" class="item-img-real">
+                        <img src="/img/cheesecake-chocolate.jpeg" alt="Cheesecake Triple Chocolate" class="item-img-real">
                     </div>
                     <div class="item-info">
-                        <h3>Cupcake Arándanos</h3>
-                        <p>Corazón de frutos del bosque y frosting de queso crema artesanal.</p>
+                        <h3>Cheesecake Triple Chocolate</h3>
+                        <p>Tres capas de chocolate para los verdaderos amantes del cacao intenso.</p>
                         <div class="item-footer">
-                            <span class="price">$85.00</span>
+                            <span class="price">$95.00</span>
                             <a href="/catalogo.html" class="add-btn" title="Ir al catálogo">+</a>
                         </div>
                     </div>
                 </div>
                 <div class="menu-item reveal">
                     <div class="item-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=80" alt="Macarons Deluxe" class="item-img-real">
+                        <img src="/img/pastel-tres-leches.jpeg" alt="Pastel de 3 Leches" class="item-img-real">
                     </div>
                     <div class="item-info">
-                        <h3>Macarons Deluxe</h3>
-                        <p>Caja de 6 unidades con sabores de autor: Rosa, Maracuyá y Sal de Mar.</p>
+                        <h3>Pastel de 3 Leches</h3>
+                        <p>Bizcocho empapado en tres leches, sabor dulce de leche. Rinde 18–20 porciones.</p>
                         <div class="item-footer">
-                            <span class="price">$190.00</span>
+                            <span class="price">$760.00</span>
                             <a href="/catalogo.html" class="add-btn" title="Ir al catálogo">+</a>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Carrusel de galería — imágenes en desplazamiento continuo -->
+            <div class="carousel-wrapper reveal">
+                <div class="carousel-track">
+                    <div class="carousel-item"><img src="/img/carousel-01.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-02.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-03.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-04.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-05.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-06.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-07.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-08.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-09.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-10.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-11.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-12.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <!-- Duplicado para loop infinito continuo -->
+                    <div class="carousel-item"><img src="/img/carousel-01.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-02.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-03.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-04.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-05.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-06.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-07.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-08.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-09.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-10.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-11.jpeg" alt="duBlé galería" loading="lazy"></div>
+                    <div class="carousel-item"><img src="/img/carousel-12.jpeg" alt="duBlé galería" loading="lazy"></div>
+                </div>
+            </div>
+
             <div class="section-cta reveal">
                 <a href="/catalogo.html" class="btn btn-primary">Ver Catálogo Completo →</a>
             </div>
@@ -178,5 +226,13 @@
     </footer>
 
     <script src="/js/script.js"></script>
+    <script>
+        /* Desincroniza los videos del hero para efecto más dinámico */
+        document.querySelectorAll('.hero-vid').forEach((v, i) => {
+            v.addEventListener('loadedmetadata', () => {
+                if (v.duration) v.currentTime = (v.duration / 3) * i;
+            });
+        });
+    </script>
 </body>
 </html>
