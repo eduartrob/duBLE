@@ -213,6 +213,62 @@
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width:5px; }
     ::-webkit-scrollbar-thumb { background:#e6e2dc; border-radius:10px; }
+
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #34322f;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Mobile nav overlay ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(253,248,245,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #34322f;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: #7e572e; }
+
+    /* ── Responsive navbar ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 14px 5%; }
+      .navbar nav { display: none; }
+      .hamburger { display: flex; }
+      #btn-open-cart { display: none; }
+    }
   </style>
 </head>
 
@@ -236,16 +292,46 @@
         <li><a href="/#contacto">Contacto</a></li>
       </ul>
     </nav>
-    <button id="btn-open-cart" aria-label="Abrir carrito" class="nav-cta">
-      <span class="nav-cta-dot"></span>
-      <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle">shopping_bag</span>
-      Carrito
-      <span id="cart-badge"
-        style="display:none;background:#FFB7C5;color:#4A4A4A;font-size:10px;font-weight:700;
-               border-radius:50%;width:18px;height:18px;align-items:center;justify-content:center;
-               margin-left:2px">0</span>
-    </button>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button id="btn-open-cart" aria-label="Abrir carrito" class="nav-cta">
+        <span class="nav-cta-dot"></span>
+        <span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle">shopping_bag</span>
+        Carrito
+        <span id="cart-badge"
+          style="display:none;background:#FFB7C5;color:#4A4A4A;font-size:10px;font-weight:700;
+                 border-radius:50%;width:18px;height:18px;align-items:center;justify-content:center;
+                 margin-left:2px">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
+
+  <!-- Mobile nav overlay -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil">
+    <a href="/">Inicio</a>
+    <a href="/#nosotros">Historia</a>
+    <a href="/catalogo.html">Colección</a>
+    <a href="/#contacto">Contacto</a>
+  </nav>
+
+  <!-- Floating cart button (mobile only) -->
+  <button id="btn-float-cart" aria-label="Abrir carrito"
+    style="position:fixed;bottom:24px;right:24px;z-index:150;display:none;align-items:center;
+           gap:8px;background:linear-gradient(135deg,#7e572e,#d9a777);color:#fff7f4;
+           font-family:'Manrope',sans-serif;font-weight:700;font-size:0.85rem;
+           padding:14px 22px;border-radius:9999px;border:none;cursor:pointer;
+           box-shadow:0 8px 24px rgba(126,87,46,0.35);transition:transform 0.2s">
+    <span class="material-symbols-outlined" style="font-size:20px">shopping_bag</span>
+    Carrito
+    <span id="cart-badge-float"
+      style="display:none;background:#FFB7C5;color:#4A4A4A;font-size:10px;font-weight:700;
+             border-radius:50%;width:18px;height:18px;align-items:center;justify-content:center;
+             margin-left:2px">0</span>
+  </button>
 
   <!-- ══════════════════════════════════════
        MAIN

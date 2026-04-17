@@ -323,16 +323,85 @@ footer {
 }
 .reveal.active { opacity:1; transform:translateY(0); }
 
+/* ── Hamburger button ── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    z-index: 1001;
+}
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile nav overlay ── */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(253,251,251,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 998;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.mobile-nav a:hover { color: var(--primary); }
+.mobile-nav .btn-primary {
+    margin-top: 12px;
+    font-size: 1rem;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
     .navbar { padding: 20px 5%; }
-    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; min-height: 100vh; height: auto; }
     .hero h1 { font-size: 3.5rem; }
     .hero p, .hero-btns { margin-left:auto; margin-right:auto; justify-content:center; }
     .hero-image { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-visual { height: 280px; }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+    .navbar { padding: 16px 5%; }
     .navbar nav { display: none; }
-    .hero h1 { font-size: 2.8rem; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .about { padding: 60px 5%; }
+    .about-info h2 { font-size: 2.4rem; }
+    .menu { padding: 60px 5%; }
+    .section-header h2 { font-size: 2.2rem; }
+}
+@media (max-width: 480px) {
+    .hero { padding: 90px 5% 40px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 0.95rem; }
+    .about-info h2 { font-size: 1.9rem; }
+    .section-header h2 { font-size: 1.8rem; }
+    .contact-data { flex-direction: column; gap: 12px; }
+    .quote { font-size: 1.4rem; }
+    .menu-grid { gap: 20px; }
+    .btn { padding: 14px 24px; font-size: 0.84rem; }
 }
