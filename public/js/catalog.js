@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────
-   duBLE — Catálogo, Carrito y Checkout
+   duBlé — Catálogo, Carrito y Checkout
    ───────────────────────────────────────────── */
 
 /* ══ State ══ */
@@ -375,7 +375,7 @@ async function handleCheckout() {
   ).join('\n');
 
   const msg =
-    `\u00a1Hola duBLE! Quiero hacer un pedido:\n\n` +
+    `\u00a1Hola duBlé! Quiero hacer un pedido:\n\n` +
     `*Productos:*\n${lines}\n\n` +
     `*Total: $${fmtPrice(payload.total)} MXN*\n\n` +
     `*Datos de entrega:*\n` +

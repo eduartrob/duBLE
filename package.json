@@ -1,7 +1,7 @@
 {
   "name": "duble-patisserie",
   "version": "1.0.0",
-  "description": "Sistema de pedidos para duBLE Pastelería Artesanal",
+  "description": "Sistema de pedidos para duBlé Pastelería Artesanal",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

@@ -1,6 +1,6 @@
-# duBLE — Boutique de Repostería Artesanal
+# duBlé — Boutique de Repostería Artesanal
 
-Sistema de pedidos MVP para **duBLE Pastelería Artesanal**. Catálogo dinámico, carrito y checkout vía WhatsApp.
+Sistema de pedidos MVP para **duBlé Pastelería Artesanal**. Catálogo dinámico, carrito y checkout vía WhatsApp.
 
 ---
 
@@ -19,7 +19,7 @@ Sistema de pedidos MVP para **duBLE Pastelería Artesanal**. Catálogo dinámico
 ## Estructura
 
 ```
-duBLE/
+duBlé/
 ├── .github/workflows/deploy.yml  ← CI/CD automático
 ├── public/
 │   ├── index.html                ← Landing page
@@ -44,8 +44,8 @@ duBLE/
 ## Instalación local
 
 ```bash
-git clone git@github.com:eduartrob/duBLE.git
-cd duBLE
+git clone git@github.com:eduartrob/duBlé.git
+cd duBlé
 npm install
 cp .env.example .env   # Llenar con tus valores reales
 npm run seed           # Poblar productos en MongoDB
@@ -102,4 +102,4 @@ npm run seed    # Poblar base de datos
 
 ---
 
-© 2026 duBLE Pastelería Artesanal
+© 2026 duBlé Pastelería Artesanal

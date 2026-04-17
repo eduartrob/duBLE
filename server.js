@@ -30,5 +30,5 @@ app.get('/catalogo', (req, res) => {
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`duBLE server running on http://localhost:${PORT}`);
+  console.log(`duBlé server running on http://localhost:${PORT}`);
 });
