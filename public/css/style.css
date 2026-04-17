@@ -139,7 +139,7 @@ body {
     min-width: 0;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.6) saturate(1.15);
+    filter: brightness(0.72) saturate(1.15);
     transition: filter 1s ease;
 }
 .hero-overlay {
@@ -148,16 +148,31 @@ body {
     z-index: 1;
     background: linear-gradient(
         105deg,
-        rgba(253,251,251,0.94) 0%,
-        rgba(253,251,251,0.80) 35%,
-        rgba(253,251,251,0.38) 65%,
-        rgba(253,251,251,0.08) 100%
+        rgba(20,12,8,0.78) 0%,
+        rgba(20,12,8,0.60) 38%,
+        rgba(20,12,8,0.22) 68%,
+        rgba(0,0,0,0.04) 100%
     );
 }
 .hero-content {
     position: relative;
     z-index: 2;
     max-width: 580px;
+}
+
+/* Texto del hero en blanco para contraste sobre video oscuro */
+.hero-content .subtitle   { color: var(--primary); }
+.hero-content h1          { color: #ffffff; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.hero-content .highlight  { color: var(--primary); }
+.hero-content p           { color: rgba(255,255,255,0.82); }
+.hero-content .btn-secondary {
+    border-color: rgba(255,255,255,0.55);
+    color: #ffffff;
+}
+.hero-content .btn-secondary:hover {
+    background: #ffffff;
+    color: var(--dark);
+    border-color: #ffffff;
 }
 
 /* Video strip entre about y menu */

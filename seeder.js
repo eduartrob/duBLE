@@ -4,44 +4,76 @@ const Product = require('./models/Product');
 
 const products = [
   {
-    name: 'Red Velvet Clásico',
-    description: 'Bizcocho húmedo con cream cheese frosting, una oda al clasicismo que enamora desde el primer bocado.',
-    price: 450,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuACTTTGoCB4_OmSubC2YEVuicTwikSUwbGau28WXfmoEE1ubNRQ8IB9GqdccXxK1WDWN1ZvZrgYic583ZDfDXz9y_bs_Azh6n-oeQyEGEDH_pdLnt8kyXRxpYQXJbZMtdWBUoohVDpEHRfsH0peHCqR4z4DqbutRID4C95V6fNHjPmcUHmLhIpDB8P-6DCkPLyKJE4SYW4py8hQKOL2jnrtBatb88oZ04olmOBfl9PjpaSZI5axFXgaLkBgTpYwO84nKJ4_XVaCcY6Q',
+    name: 'Rol de Canela con Mascarpone',
+    description: 'Masa esponjosa con canela y glaseado artesanal de mascarpone. Precio por pieza.',
+    price: 65,
+    image: '/img/rol-canela.jpeg',
     category: 'pasteles',
     badge: 'Favorito'
   },
   {
-    name: 'Trufa de Chocolate',
-    description: 'Cacao al 70%, bizcocho húmedo y ganache montada. Para los verdaderos amantes del chocolate.',
-    price: 520,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA2hadGoQ3FmJQgoETU_g2CsFd6fU6vumjrckix4gEANlP6n8OAFm8SQnI4r2bwrR8mEobUE0lxqNIpNNsjoZ3ky_dNU6ClRyb1kA1T0a5Bo35YVhp2yiNuEk7LnX_FcwUMFs3WTGLBZXfrnkfNsuxrmefGtHQF-PUye8kj9kU7JTbGDO-h6vMo7SYujP_6tEAYM-E5cdDlKTz-fnqXdPgv6qgCF1CIBLQvT2otD-ZE_JwRIe6xgIyBqGOkWuMRuS6I_Kq57Th-T84g',
+    name: 'Tarta Vasca',
+    description: 'Cremosa y horneada al punto perfecto, con base especiada y textura suave irresistible.',
+    price: 75,
+    image: '/img/tarta-vasca.jpeg',
     category: 'pasteles',
     badge: null
   },
   {
-    name: 'Zanahoria & Nuez Pecana',
-    description: 'Especias cálidas, nuez tostada y un frosting ligero que equilibra perfectamente el dulzor. Versión artesanal de un clásico.',
-    price: 480,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA8OIjYnale43w8r6woSR4gWpIriWT4EVdyT_G4amRo3O-bx3MLUVKrgQe7lrlKUqiNHaxBoGmeAkzGhflhEIbWjU4KpoZTAorcc0Gd8zuPieSR5XOSCLKgRZmnl5sbx4ofNdIdogJ82nnnPMTVGI0PdgQGw18k9aAFZGTAmMJRaVSooIdmvWjZoZq7QaQtHmBDUgbS_EwxfMAHiOg5tgo1u8dlOkJA7wc3m29MhQtE9t8ceRd60ycZj32zP9Jx9lo1lN_Sm4ooDnKe',
-    category: 'pasteles',
-    badge: 'Nuevo'
+    name: 'Cheesecake Triple Chocolate',
+    description: 'Tres capas de chocolate para los verdaderos amantes del cacao intenso.',
+    price: 95,
+    image: '/img/cheesecake-chocolate.jpeg',
+    category: 'chocolates',
+    badge: null
   },
   {
-    name: 'Opera Cake',
-    description: 'Almendra, café y chocolate amargo en perfecta armonía. Siete capas de pura elegancia francesa.',
-    price: 560,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCB_hcFP9PzFn0bAW6FIaLDYwokWLlwHF32NML2QzrRJcOSS8lO8LWCvHRDJyOvxwX2tyhtp6WSFUdShKYm3qWsWICEkGaEW1lClIMR7BYYrzyUbCwSsSMwnB5znPsmccLVmMz0zvsaYH3c6v2Wm_IpUTzCz7_TunzfSyH36nUqV3wXqjKf_XAxwSPQUhSD8ftohnZXx-tEEXLe1z6h7zwTRhoVqkM6rT7x6rx8969tXUTEM3XEOs488P9eaCZVvD7xIvoJwHgiP4-N',
+    name: 'Pastel de Chocolate',
+    description: 'Pastel de chocolate individual, suave y esponjoso.',
+    price: 95,
+    image: '/img/pastel-chocolate.jpeg',
+    category: 'chocolates',
+    badge: null
+  },
+  {
+    name: 'Tarta Entera',
+    description: 'Tarta artesanal entera, perfecta para compartir en cualquier celebración.',
+    price: 600,
+    image: '/img/tarta-entera.jpeg',
     category: 'pasteles',
     badge: null
   },
   {
-    name: 'Caja Macarons (12 pzas)',
-    description: 'Selección de sabores de temporada: Rosa, Pistacho, Caramelo y Frambuesa. Un regalo irresistible.',
-    price: 380,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuATsMIqF7mi1LPBXv1CKRq99rpQgXKIbAacFhD8xPX8X3pHhfS6qiV00NdO0DFystHMqJG3R0jX6zCTK9XkgvSMX7Oz-QeoziW4dZuN-jcB2nGeF4_lcow3gKHBZ3yebLxfhMHBb5kqyLGAf8vA23oyImsDYvRIFbNakZ7hkSzTYSqolY2mGb2eAPxpD6eBnXamS9r-UK4kjtv7nMXD-0ti6etDRLzFbzz5IZQUgNn4LPthF-VI6b3cwKC10TtbXpkRKy2l7TCmXwvo',
-    category: 'macarons',
+    name: 'Pastel de 3 Leches',
+    description: 'Bizcocho empapado en tres leches, sabor dulce de leche. Rinde 18–20 porciones.',
+    price: 760,
+    image: '/img/pastel-tres-leches.jpeg',
+    category: 'pasteles',
+    badge: null
+  },
+  {
+    name: 'Pastel de Mantequilla',
+    description: 'Relleno de compota de frutos rojos con betún de queso y buttercream. 15–18 porciones.',
+    price: 790,
+    image: '/img/pastel-mantequilla.jpeg',
+    category: 'pasteles',
+    badge: null
+  },
+  {
+    name: 'Pastel de Zanahoria con Pistache',
+    description: 'Betún de queso y dulce de leche con pistache. Pequeño (12–15 pax) $830 | Grande (25–30 pax) $1,430.',
+    price: 830,
+    image: '/img/pastel-zanahoria.jpeg',
+    category: 'pasteles',
     badge: 'Nuevo'
+  },
+  {
+    name: 'Pastel de Chocolate Gourmet',
+    description: 'Relleno de chocolate, cubierto con buttercream. Mediano (12–15 pax) $970 | Grande (20–25 pax) $1,380.',
+    price: 970,
+    image: '/img/pastel-chocolate-grande.jpeg',
+    category: 'chocolates',
+    badge: null
   }
 ];
 
