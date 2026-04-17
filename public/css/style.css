@@ -164,7 +164,7 @@ body {
 .hero-content .subtitle   { color: var(--primary); }
 .hero-content h1          { color: #ffffff; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
 .hero-content .highlight  { color: var(--primary); }
-.hero-content p           { color: rgba(255,255,255,0.96); font-weight: 700; }
+.hero-content p           { color: rgba(255,255,255,0.96); font-family: 'Montserrat', sans-serif; font-weight: 600; }
 .hero-content .btn-secondary {
     border-color: rgba(255,255,255,0.55);
     color: #ffffff;
