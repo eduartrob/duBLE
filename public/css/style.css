@@ -164,7 +164,7 @@ body {
 .hero-content .subtitle   { color: var(--primary); }
 .hero-content h1          { color: #ffffff; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
 .hero-content .highlight  { color: var(--primary); }
-.hero-content p           { color: rgba(255,255,255,0.82); }
+.hero-content p           { color: rgba(255,255,255,0.96); font-weight: 500; }
 .hero-content .btn-secondary {
     border-color: rgba(255,255,255,0.55);
     color: #ffffff;
@@ -267,9 +267,9 @@ body {
 .btn-primary {
     background-color: var(--primary);
     color: white;
-    box-shadow: 0 10px 20px rgba(255,183,197,0.3);
+    box-shadow: 0 6px 16px rgba(255,183,197,0.18);
 }
-.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(255,183,197,0.4); }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(255,183,197,0.22); }
 .btn-secondary { border: 1px solid #ddd; color: var(--dark); }
 .btn-secondary:hover { background: var(--dark); color: white; }
 
